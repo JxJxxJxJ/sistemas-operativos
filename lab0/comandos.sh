@@ -105,6 +105,17 @@ ${BGreen}awk -F ';' 'NR > 1 && $2 !~ /^[[:space:]]*$/ {gsub(/[[:space:]]+/, "", 
 
 awk -F ';' 'NR > 1 && $2 !~ /^[[:space:]]*$/ {gsub(/[[:space:]]+/, "", $2); print tolower($2)}' heroes.csv | head
 
+# 4. weather_cordoba.in tiene en la columna 5 y 6 las temperaturas maximas y minimas. Dar solo los 
+echo -e "${BCyan}Ejercicio 4: 
+El día de mayor temperatura fue"
+echo -e "${BGreen}sort -k 5 weather_cordoba.in | head -1 | awk '{print 'Año: '\$1', Mes: '\$2', Día: '\$3' (Temperatura Máxima: '\$5')'}' ${NC}"
+
+sort -k 5 weather_cordoba.in | head -1 | awk '{print "Año: "$1", Mes: "$2", Día: "$3" (Temperatura Máxima: "$5")"}'
+
+echo -e "${BCyan}El día de menor temperatura fue"
+echo -e "${BGreen}sort -k 6 weather_cordoba.in | head -1 | awk '{print 'Año: '\$1 ', Mes: '\$2', Día: '\$3'(Temperatura Mínima: '\$6')'}' ${NC}"
+sort -k 6 weather_cordoba.in | head -1 | awk '{print "Año: " $1 ", Mes: " $2 ", Día: " $3 " (Temperatura Mínima: "$6")"}'
+
 # 5. Para sortear segun el numero en la columan j puedo hacer
 # sort -k j <file.in>, entonces en mi caso me queda 
 # sort -k 5 weather_cordoba.in
