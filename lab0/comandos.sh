@@ -1,33 +1,19 @@
 #!/bin/bash
 
-# Algunos colores porque por que no 
+: << 'NOTA:'
+      Si bien este archivo es un poco grande (>8 lineas)
+      los "one-liners" los imprimi en el stdout in verde
+      siempre que pude.
+NOTA:
 
-# Reset
+# Algunos colores
 NC='\033[0m'              # No-Color
-
-# Regular Colors
-Black='\033[0;30m'        # Black
-Red='\033[0;31m'          # Red
 Green='\033[0;32m'        # Green
 Yellow='\033[0;33m'       # Yellow
-Blue='\033[0;34m'         # Blue
-Purple='\033[0;35m'       # Purple
 Cyan='\033[0;36m'         # Cyan
-White='\033[0;37m'        # White
-
-# Bold
-BBlack='\033[1;30m'       # Black
-BRed='\033[1;31m'         # Red
-BGreen='\033[1;32m'       # Green
-BYellow='\033[1;33m'      # Yellow
-BBlue='\033[1;34m'        # Blue
-BPurple='\033[1;35m'      # Purple
-BCyan='\033[1;36m'        # Cyan
-BWhite='\033[1;37m'       # White
-
-: << '###COMENTARIO'
-algo algo, esto no se ejecuta
-###COMENTARIO
+BGreen='\033[1;32m'       # Bold Green
+BYellow='\033[1;33m'      # Bold Yellow
+BCyan='\033[1;36m'        # Bold Cyan
 
 #0. Para descargar archivos de google drive usando wget https://stackoverflow.com/a/39087286
 # wget "https://drive.google.com/uc?export=download&id=1mTAp0Cl64SkRGwOp2GmROEtdRzf2Xz82"
@@ -106,7 +92,8 @@ ${BGreen}awk -F ';' 'NR > 1 && $2 !~ /^[[:space:]]*$/ {gsub(/[[:space:]]+/, "", 
 awk -F ';' 'NR > 1 && $2 !~ /^[[:space:]]*$/ {gsub(/[[:space:]]+/, "", $2); print tolower($2)}' heroes.csv | head
 
 # 4. weather_cordoba.in tiene en la columna 5 y 6 las temperaturas maximas y minimas. Dar solo los 
-echo -e "${BCyan}Ejercicio 4: 
+echo -e "
+${BCyan}Ejercicio 4: 
 El día de mayor temperatura fue"
 echo -e "${BGreen}sort -k 5 weather_cordoba.in | head -1 | awk '{print 'Año: '\$1', Mes: '\$2', Día: '\$3' (Temperatura Máxima: '\$5')'}' ${NC}"
 
