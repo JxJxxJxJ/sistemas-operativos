@@ -77,10 +77,10 @@ cat /proc/cpuinfo | egrep 'model name' | wc -l
 
 # 3. Descargo heroes.csv si no existe
 if [ ! -f ./heroes.csv ]; then
-echo -e "
-${BYellow}heroes.csv not found, descargando. ${NC}"
-echo -e ${BGreen}"curl -o heroes.csv 'https://raw.githubusercontent.com/dariomalchiodi/superhero-datascience/master/content/data/heroes.csv'"}
-curl -o heroes.csv "https://raw.githubusercontent.com/dariomalchiodi/superhero-datascience/master/content/data/heroes.csv"
+  echo -e "
+  ${BYellow}heroes.csv not found, descargando. ${NC}"
+  echo -e ${BGreen}"curl -o heroes.csv 'https://raw.githubusercontent.com/dariomalchiodi/superhero-datascience/master/content/data/heroes.csv'"}
+  curl -o heroes.csv "https://raw.githubusercontent.com/dariomalchiodi/superhero-datascience/master/content/data/heroes.csv"
 fi
 
 # wget -o heroes.csv "https://raw.githubusercontent.com/dariomalchiodi/superhero-datascience/master/content/data/heroes.csv"
@@ -142,8 +142,8 @@ sort -k 3 -n atpplayers.in | head
 
 echo -e "
 ${BCyan}Ejercicio 6:
-${BGreen}awk '{diferencia=\$7-\$8; print \$0, \"diff:\" diferencia}' superliga.in | sort -k2,2nr -k10,10nr | awk '{\$NF=\"\"; print}' superliga.in | sed 's/ *$//' | head ${NC}"
-awk '{diferencia=$7-$8; print $0, "diff:" diferencia}' superliga.in | sort -k2,2nr -k10,10nr | awk '{$NF=""; print}' superliga.in | sed 's/ *$//' | head
+${BGreen}awk '{diferencia=\$7-\$8; print \$0, \"diff:\" diferencia}' superliga.in | sort -k2nr -k10nr | awk '{\$NF=\"\"; print}' superliga.in | sed 's/ *$//' | head ${NC}"
+awk '{diferencia=$7-$8; print $0, "diff:" diferencia}' superliga.in | sort -k2nr -k10nr | awk '{$NF=""; print}' superliga.in | sed 's/ *$//' | head
 
 # 7. ip muestra cosas, demasiadas. Me interesa mac address que buscando esta en la parte donde ddice link/ether. Grepeo con solo eso
 
